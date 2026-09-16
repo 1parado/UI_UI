@@ -163,6 +163,230 @@ export type {
   EmptyDescriptionProps,
 } from './components/Empty'
 
+export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from './components/Accordion'
+export type {
+  AccordionItemProps,
+  AccordionTriggerProps,
+  AccordionContentProps,
+} from './components/Accordion'
+
+export {
+  AlertDialog,
+  AlertDialogPortal,
+  AlertDialogOverlay,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogFooter,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogClose,
+} from './components/AlertDialog'
+export type {
+  AlertDialogOverlayProps,
+  AlertDialogContentProps,
+  AlertDialogHeaderProps,
+  AlertDialogFooterProps,
+  AlertDialogTitleProps,
+  AlertDialogDescriptionProps,
+  AlertDialogActionProps,
+  AlertDialogCancelProps,
+  AlertDialogCloseProps,
+} from './components/AlertDialog'
+
+export {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+  BreadcrumbEllipsis,
+} from './components/Breadcrumb'
+export type {
+  BreadcrumbListProps,
+  BreadcrumbItemProps,
+  BreadcrumbLinkProps,
+  BreadcrumbPageProps,
+  BreadcrumbSeparatorProps,
+  BreadcrumbEllipsisProps,
+} from './components/Breadcrumb'
+
+export {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from './components/Collapsible'
+export type {
+  CollapsibleTriggerProps,
+  CollapsibleContentProps,
+} from './components/Collapsible'
+
+export {
+  Command,
+  CommandDialog,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+  CommandSeparator,
+  CommandShortcut,
+  CommandLoading,
+} from './components/Command'
+export type {
+  CommandDialogProps,
+  CommandInputProps,
+  CommandListProps,
+  CommandEmptyProps,
+  CommandGroupProps,
+  CommandItemProps,
+  CommandSeparatorProps,
+  CommandShortcutProps,
+  CommandLoadingProps,
+} from './components/Command'
+
+export {
+  ContextMenu,
+  ContextMenuTrigger,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuCheckboxItem,
+  ContextMenuRadioItem,
+  ContextMenuLabel,
+  ContextMenuSeparator,
+  ContextMenuShortcut,
+  ContextMenuGroup,
+  ContextMenuPortal,
+  ContextMenuSub,
+  ContextMenuSubContent,
+  ContextMenuSubTrigger,
+  ContextMenuRadioGroup,
+} from './components/ContextMenu'
+export type {
+  ContextMenuContentProps,
+  ContextMenuItemProps,
+  ContextMenuCheckboxItemProps,
+  ContextMenuRadioItemProps,
+  ContextMenuLabelProps,
+  ContextMenuSeparatorProps,
+  ContextMenuShortcutProps,
+  ContextMenuSubContentProps,
+  ContextMenuSubTriggerProps,
+} from './components/ContextMenu'
+
+export {
+  HoverCard,
+  HoverCardTrigger,
+  HoverCardContent,
+} from './components/HoverCard'
+export type { HoverCardContentProps } from './components/HoverCard'
+
+export {
+  InputGroup,
+  InputGroupInput,
+  InputGroupAddon,
+  InputGroupText,
+  addonVariants,
+} from './components/InputGroup'
+export type {
+  InputGroupProps,
+  InputGroupInputProps,
+  InputGroupAddonProps,
+  InputGroupTextProps,
+} from './components/InputGroup'
+
+export {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+  InputOTPSeparator,
+} from './components/InputOTP'
+export type {
+  InputOTPGroupProps,
+  InputOTPSlotProps,
+  InputOTPSeparatorProps,
+} from './components/InputOTP'
+
+export { Kbd, KbdGroup } from './components/Kbd'
+export type { KbdProps, KbdGroupProps } from './components/Kbd'
+
+export {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
+  getPaginationRange,
+} from './components/Pagination'
+export type {
+  PaginationProps,
+  PaginationContentProps,
+  PaginationItemProps,
+  PaginationLinkProps,
+  PaginationPreviousProps,
+  PaginationNextProps,
+  PaginationEllipsisProps,
+  PaginationRangeItem,
+  GetPaginationRangeOptions,
+} from './components/Pagination'
+
+export {
+  Sheet,
+  SheetPortal,
+  SheetOverlay,
+  SheetTrigger,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetFooter,
+  SheetTitle,
+  SheetDescription,
+  sheetVariants,
+} from './components/Sheet'
+export type {
+  SheetOverlayProps,
+  SheetContentProps,
+  SheetHeaderProps,
+  SheetFooterProps,
+  SheetTitleProps,
+  SheetDescriptionProps,
+} from './components/Sheet'
+
+export { Spinner, spinnerVariants } from './components/Spinner'
+export type { SpinnerProps } from './components/Spinner'
+
+export { Toggle, toggleVariants } from './components/Toggle'
+export type { ToggleProps } from './components/Toggle'
+
+export { ToggleGroup, ToggleGroupItem } from './components/ToggleGroup'
+export type { ToggleGroupProps, ToggleGroupItemProps } from './components/ToggleGroup'
+
+export {
+  Heading,
+  Text,
+  Small,
+  Blockquote,
+  InlineCode,
+  textVariants,
+} from './components/Typography'
+export type {
+  HeadingProps,
+  TextProps,
+  SmallProps,
+  BlockquoteProps,
+  InlineCodeProps,
+} from './components/Typography'
+
 // AI surfaces — conversation
 export {
   Message,

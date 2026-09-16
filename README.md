@@ -38,35 +38,51 @@ pnpm test
 - **Button** — variants, sizes, loading state
 - **Input** — text input with invalid state
 - **Textarea** — multi-line input with invalid state
+- **InputGroup** — input with icon / prefix / action slots inside one focus ring
+- **InputOTP** — one-time-code slots with paste and autofill support
 - **Label** — accessible form labels
 - **Checkbox** — with indeterminate support
 - **RadioGroup / Radio** — single-choice groups
 - **Select** — full-featured select with groups and separators
 - **Slider** — single and range sliders
 - **Switch** — accessible toggle
+- **Toggle** — two-state button for formatting and view switches
+- **ToggleGroup** — a row of related toggles, single or multiple
 
 **Layout & structure**
 - **Card** — header / content / footer composition
+- **Accordion** — stacked disclosure sections, single or multiple
+- **Collapsible** — one independently toggled disclosure region
+- **Breadcrumb** — path landmark with collapsing and `asChild` links
+- **Pagination** — composable page bar plus a pure `getPaginationRange` helper
 - **Separator** — horizontal / vertical, decorative or semantic
 - **Tabs** — keyboard-navigable tab panels
 - **ScrollArea** — custom-scrollbar viewport for long lists
+- **Typography** — `Heading`, `Text`, `Small`, `Blockquote`, `InlineCode`
 
 **Overlays**
 - **Dialog** — modal with focus trap, ESC close, scroll lock
+- **AlertDialog** — confirmation that blocks outside interaction, focus on Cancel
+- **Sheet** — panel sliding in from any edge (settings, filters, details)
 - **Popover** — anchored floating panel
+- **HoverCard** — hover preview for an entity or link target
 - **Tooltip** — hover/focus hints
 - **DropdownMenu** — action menus with labels and separators
+- **ContextMenu** — right-click menus, same API as `DropdownMenu`
+- **Command** — filterable command list and ⌘K palette
 
 **Feedback**
 - **Alert** — static banners (default / destructive / success / warning)
 - **Toast** — transient notifications with viewport management
 - **Progress** — animated progress bar with ARIA attributes
+- **Spinner** — indeterminate activity indicator
 - **Skeleton** — loading placeholder
 - **Empty** — empty-state composition
 - **Badge** — status badges
 
 **Other**
 - **Avatar** — image with automatic fallback
+- **Kbd / KbdGroup** — keyboard keys and shortcuts
 
 ### AI surfaces
 
@@ -127,6 +143,11 @@ export default {
 // into your global stylesheet, or set your own values.
 // The .hljs-* map in the components layer themes code fences — keep it too.
 ```
+
+Motion is limited to three intents — a disclosure opening, a panel sliding in
+from an edge, and an overlay fading — and every one of them is disabled under
+`prefers-reduced-motion`. The keyframes ship inside `@paradox/ui/styles.css`, so
+there is nothing extra to configure.
 
 ### Building a chat surface
 

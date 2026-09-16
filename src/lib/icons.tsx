@@ -47,6 +47,47 @@ export const ChevronRightIcon = (props: IconProps) => (
   </svg>
 )
 
+export const ChevronLeftIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <path d="m15 18-6-6 6-6" />
+  </svg>
+)
+
+export const ChevronUpIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <path d="m18 15-6-6-6 6" />
+  </svg>
+)
+
+export const SearchIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <circle cx="11" cy="11" r="8" />
+    <path d="m21 21-4.3-4.3" />
+  </svg>
+)
+
+export const CalendarIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <path d="M8 2v4" />
+    <path d="M16 2v4" />
+    <rect width="18" height="18" x="3" y="4" rx="2" />
+    <path d="M3 10h18" />
+  </svg>
+)
+
+/** Filled dot — used as the radio indicator inside menus. */
+export const CircleIcon = (props: IconProps) => (
+  <svg {...base} fill="currentColor" stroke="none" {...props}>
+    <circle cx="12" cy="12" r="4" />
+  </svg>
+)
+
+export const MinusIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <path d="M5 12h14" />
+  </svg>
+)
+
 export const MoreHorizontalIcon = (props: IconProps) => (
   <svg {...base} {...props}>
     <circle cx="12" cy="12" r="1" />
