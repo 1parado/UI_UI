@@ -38,6 +38,16 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
+    /* Code highlighting — consumed by the .hljs-* map below, never directly. */
+    --code-keyword: 275 60% 42%;
+    --code-string: 145 55% 30%;
+    --code-number: 25 85% 40%;
+    --code-comment: 215 16% 52%;
+    --code-function: 220 70% 44%;
+    --code-type: 190 65% 33%;
+    --code-variable: 340 55% 45%;
+    --code-punctuation: 215 16% 42%;
+
     --radius: 0.5rem;
   }
 
@@ -75,6 +85,15 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
+    --code-keyword: 275 80% 78%;
+    --code-string: 145 55% 62%;
+    --code-number: 25 90% 70%;
+    --code-comment: 215 20% 55%;
+    --code-function: 215 90% 76%;
+    --code-type: 190 75% 70%;
+    --code-variable: 340 80% 76%;
+    --code-punctuation: 215 20% 70%;
   }
 }
 
@@ -84,5 +103,83 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /**
+   * highlight.js token map. `rehype-highlight` emits `.hljs-*` classes; this
+   * maps them onto the `--code-*` tokens so a code fence never needs an
+   * imported third-party theme and always follows light/dark.
+   */
+  .hljs {
+    color: hsl(var(--foreground));
+  }
+
+  .hljs-comment,
+  .hljs-quote {
+    color: hsl(var(--code-comment));
+    font-style: italic;
+  }
+
+  .hljs-keyword,
+  .hljs-selector-tag,
+  .hljs-literal,
+  .hljs-doctag,
+  .hljs-name {
+    color: hsl(var(--code-keyword));
+  }
+
+  .hljs-string,
+  .hljs-regexp,
+  .hljs-addition,
+  .hljs-attribute,
+  .hljs-meta .hljs-string {
+    color: hsl(var(--code-string));
+  }
+
+  .hljs-number,
+  .hljs-symbol,
+  .hljs-bullet,
+  .hljs-link {
+    color: hsl(var(--code-number));
+  }
+
+  .hljs-title,
+  .hljs-title.function_,
+  .hljs-section {
+    color: hsl(var(--code-function));
+  }
+
+  .hljs-type,
+  .hljs-built_in,
+  .hljs-title.class_,
+  .hljs-class .hljs-title {
+    color: hsl(var(--code-type));
+  }
+
+  .hljs-variable,
+  .hljs-template-variable,
+  .hljs-params,
+  .hljs-attr {
+    color: hsl(var(--code-variable));
+  }
+
+  .hljs-punctuation,
+  .hljs-operator,
+  .hljs-meta {
+    color: hsl(var(--code-punctuation));
+  }
+
+  .hljs-deletion {
+    color: hsl(var(--destructive));
+  }
+
+  .hljs-emphasis {
+    font-style: italic;
+  }
+
+  .hljs-strong {
+    font-weight: 600;
   }
 }

@@ -3,6 +3,7 @@ import './styles/globals.css'
 
 // Utilities
 export { cn } from './lib/utils'
+export { formatBytes, formatCompactNumber, formatNumber } from './lib/format'
 
 // Components
 export { Button, buttonVariants } from './components/Button'
@@ -161,3 +162,108 @@ export type {
   EmptyTitleProps,
   EmptyDescriptionProps,
 } from './components/Empty'
+
+// AI surfaces — conversation
+export {
+  Message,
+  MessageAvatar,
+  MessageContent,
+  MessageActions,
+} from './components/Message'
+export type {
+  MessageProps,
+  MessageRole,
+  MessageAvatarProps,
+  MessageContentProps,
+  MessageActionsProps,
+} from './components/Message'
+
+export { MessageList } from './components/MessageList'
+export type { MessageListProps, MessageListHandle } from './components/MessageList'
+
+export {
+  Composer,
+  ComposerTextarea,
+  ComposerToolbar,
+  ComposerHint,
+  ComposerSubmit,
+} from './components/Composer'
+export type {
+  ComposerProps,
+  ComposerTextareaProps,
+  ComposerToolbarProps,
+  ComposerHintProps,
+  ComposerSubmitProps,
+} from './components/Composer'
+
+export { StreamingText } from './components/StreamingText'
+export type { StreamingTextProps } from './components/StreamingText'
+
+export { TypingIndicator } from './components/TypingIndicator'
+export type { TypingIndicatorProps } from './components/TypingIndicator'
+
+export { ScrollArea, ScrollBar } from './components/ScrollArea'
+export type { ScrollAreaProps, ScrollBarProps } from './components/ScrollArea'
+
+// AI surfaces — generated output
+export { MarkdownRenderer } from './components/MarkdownRenderer'
+export type { MarkdownRendererProps } from './components/MarkdownRenderer'
+
+export { CodeBlock } from './components/CodeBlock'
+export type { CodeBlockProps } from './components/CodeBlock'
+
+export { Citation, SourceChip } from './components/Citation'
+export type { CitationProps, SourceChipProps } from './components/Citation'
+
+export {
+  ToolCallCard,
+  ToolCallSection,
+  ToolCallCode,
+  AgentStep,
+  AgentStepList,
+} from './components/ToolCallCard'
+export type {
+  ToolCallCardProps,
+  ToolCallSectionProps,
+  ToolCallCodeProps,
+  ToolCallStatus,
+  AgentStepProps,
+  AgentStepListProps,
+} from './components/ToolCallCard'
+
+// AI surfaces — conversation history and context
+export {
+  ConversationSidebar,
+  ConversationSidebarHeader,
+  ConversationSidebarContent,
+  ConversationSidebarFooter,
+  ConversationSidebarGroup,
+  ConversationItem,
+} from './components/ConversationSidebar'
+export type {
+  ConversationSidebarProps,
+  ConversationSidebarHeaderProps,
+  ConversationSidebarContentProps,
+  ConversationSidebarFooterProps,
+  ConversationSidebarGroupProps,
+  ConversationItemProps,
+} from './components/ConversationSidebar'
+
+export { AttachmentList, Attachment } from './components/AttachmentList'
+export type {
+  AttachmentListProps,
+  AttachmentProps,
+} from './components/AttachmentList'
+
+export { ModelSelector } from './components/ModelSelector'
+export type { ModelSelectorProps, ModelOption } from './components/ModelSelector'
+
+// AI surfaces — feedback and control
+export { StopButton } from './components/StopButton'
+export type { StopButtonProps } from './components/StopButton'
+
+export { Feedback } from './components/Feedback'
+export type { FeedbackProps, FeedbackValue } from './components/Feedback'
+
+export { UsageMeter } from './components/UsageMeter'
+export type { UsageMeterProps } from './components/UsageMeter'

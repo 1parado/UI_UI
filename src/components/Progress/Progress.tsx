@@ -1,7 +1,26 @@
 import * as React from 'react'
+import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
-export type ProgressProps = React.HTMLAttributes<HTMLDivElement> & {
+const progressIndicatorVariants = cva(
+  'h-full transition-all duration-500 ease-in-out',
+  {
+    variants: {
+      variant: {
+        default: 'bg-primary',
+        warning: 'bg-warning',
+        destructive: 'bg-destructive',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  }
+)
+
+export interface ProgressProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof progressIndicatorVariants> {
   /** Current progress value, between 0 and `max`. */
   value?: number
   /** Maximum value. Defaults to 100. */
@@ -9,7 +28,7 @@ export type ProgressProps = React.HTMLAttributes<HTMLDivElement> & {
 }
 
 const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
-  ({ className, value = 0, max = 100, ...props }, ref) => {
+  ({ className, value = 0, max = 100, variant, ...props }, ref) => {
     const clamped = Math.min(Math.max(value, 0), max)
     const percent = max > 0 ? Math.round((clamped / max) * 100) : 0
 
@@ -27,7 +46,7 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
         {...props}
       >
         <div
-          className="h-full bg-primary transition-all duration-500 ease-in-out"
+          className={cn(progressIndicatorVariants({ variant }))}
           style={{ width: `${percent}%` }}
         />
       </div>

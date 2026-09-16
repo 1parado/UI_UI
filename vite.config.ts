@@ -25,7 +25,18 @@ export default defineConfig({
       fileName: (format) => (format === 'es' ? 'index.js' : 'index.cjs'),
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      // Radix primitives stay bundled — they are small and it keeps the output
+      // predictable. The markdown stack is kept external instead: it is only
+      // reachable through `MarkdownRenderer`, it is heavy, and consumers get it
+      // from this package's own `dependencies`.
+      external: [
+        'react',
+        'react-dom',
+        'react/jsx-runtime',
+        'react-markdown',
+        'remark-gfm',
+        'rehype-highlight',
+      ],
       output: {
         globals: {
           react: 'React',
