@@ -16,8 +16,10 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
+  // Required for GitHub Pages project site: https://1parado.github.io/UI_UI/
   async viteFinal(config) {
     return mergeConfig(config, {
+      base: process.env.NODE_ENV === 'production' ? '/UI_UI/' : '/',
       resolve: {
         alias: {
           '@': resolve(__dirname, '../src'),
