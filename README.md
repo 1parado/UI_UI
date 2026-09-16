@@ -32,6 +32,43 @@ pnpm lint
 pnpm test
 ```
 
+### Previewing the component explorer
+
+Two ways to look at the components, for two different jobs:
+
+| | Command | Use it when |
+|---|---|---|
+| Dev server | `pnpm storybook` | You are editing components. Only the stories you open get compiled, and edits hot-reload. |
+| Static build | `pnpm build-storybook` then `pnpm storybook:preview` | You want the real production artifact, or something to hand to someone else. |
+
+`pnpm storybook:preview` starts `scripts/serve-storybook.mjs` on
+<http://127.0.0.1:6006>. It is a zero-dependency server that does three things
+`python -m http.server` does not, and they are what makes the difference between
+a preview that snaps open and one that appears to hang:
+
+- **brotli/gzip.** The build is ~8.7 MB of JavaScript, which compresses to about
+  1.3 MB — a 77% reduction on the wire.
+- **Immutable caching.** Content-hashed bundles under `assets/`, `sb-addons/` and
+  `sb-manager/` are sent with `Cache-Control: immutable`, so reloads and revisits
+  come from the disk cache. Only `index.html`, `iframe.html` and `index.json`
+  are revalidated.
+- **304 handling.** Fresh HTML is answered with `Not Modified` instead of the
+  full body.
+
+Point it somewhere else with `--port` / `--dir`.
+
+The static build uses a **relative** base, so the same `storybook-static/`
+directory works when served from the domain root, from a sub-path like
+`/UI_UI/`, or straight off disk. The dev server keeps an absolute base so HMR
+resolves module URLs correctly.
+
+### Deploying
+
+`.github/workflows/ci.yml` publishes the explorer to GitHub Pages on every push
+to `main`, after the typecheck/lint/test/build job passes. Enable it once under
+**Settings → Pages → Build and deployment → Source: GitHub Actions**; after that
+it is live at <https://1parado.github.io/UI_UI/>.
+
 ## Components
 
 **Form**

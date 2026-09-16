@@ -5,6 +5,9 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
   quality:
     runs-on: ubuntu-latest
@@ -34,3 +37,62 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+  # Publishes the component explorer to GitHub Pages so there is a link that
+  # loads instantly from anywhere: Pages serves over HTTP/2 with brotli from a
+  # CDN, and the browser keeps the hashed bundles cached between visits. A
+  # localhost static server cannot match that, and it only exists while the
+  # machine is on.
+  #
+  # Gated on `quality` so a red build never ships, and on `push` so pull
+  # requests are checked without touching production.
+  #
+  # One-time setup: repository Settings → Pages → Build and deployment →
+  # Source: "GitHub Actions".
+  storybook:
+    needs: quality
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    concurrency:
+      group: pages
+      cancel-in-progress: true
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Storybook
+        run: pnpm build-storybook
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Storybook
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: storybook-static
+
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
