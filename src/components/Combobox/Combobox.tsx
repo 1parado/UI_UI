@@ -38,13 +38,69 @@ interface ComboboxBaseProps
 }
 
 export interface ComboboxProps extends ComboboxBaseProps {
+  /** Selected value. Omit to let the picker hold its own state. */
   value?: string
+  defaultValue?: string
   onValueChange?: (value: string) => void
 }
 
 export interface ComboboxMultipleProps extends ComboboxBaseProps {
+  /** Selected values. Omit to let the picker hold its own state. */
   value?: string[]
+  defaultValue?: string[]
   onValueChange?: (value: string[]) => void
+}
+
+/**
+ * Controllable state, the same contract Radix uses everywhere else in the
+ * library: pass `value` to own it, or `defaultValue` to let the picker hold it.
+ * Without either, the picker starts empty and keeps its own selection — which
+ * is what a one-off template needs.
+ */
+function useControllableString({
+  value,
+  defaultValue,
+  onValueChange,
+}: {
+  value?: string
+  defaultValue?: string
+  onValueChange?: (value: string) => void
+}) {
+  const [internal, setInternal] = React.useState(defaultValue ?? '')
+  const current = value ?? internal
+
+  const setValue = React.useCallback(
+    (next: string) => {
+      if (value === undefined) setInternal(next)
+      onValueChange?.(next)
+    },
+    [value, onValueChange]
+  )
+
+  return [current, setValue] as const
+}
+
+function useControllableStringArray({
+  value,
+  defaultValue,
+  onValueChange,
+}: {
+  value?: string[]
+  defaultValue?: string[]
+  onValueChange?: (value: string[]) => void
+}) {
+  const [internal, setInternal] = React.useState<string[]>(defaultValue ?? [])
+  const current = value ?? internal
+
+  const setValue = React.useCallback(
+    (next: string[]) => {
+      if (value === undefined) setInternal(next)
+      onValueChange?.(next)
+    },
+    [value, onValueChange]
+  )
+
+  return [current, setValue] as const
 }
 
 const optionLabel = (option: ComboboxOption) =>
@@ -70,8 +126,11 @@ function OptionRow({ option, checked }: { option: ComboboxOption; checked: boole
 }
 
 /**
- * Searchable single-select. `Combobox` keeps the value in your state; the list
- * filters as you type and closes on pick.
+ * Searchable single-select: the list filters as you type and closes on pick.
+ *
+ * Controllable, like every other Radix-backed component here — pass `value`
+ * with `onValueChange` to own the selection, or just `defaultValue` to let the
+ * picker hold it:
  *
  * ```tsx
  * const [model, setModel] = React.useState('')
@@ -87,6 +146,7 @@ const Combobox = React.forwardRef<HTMLButtonElement, ComboboxProps>(
     {
       options,
       value,
+      defaultValue,
       onValueChange,
       placeholder = 'Select an option',
       searchPlaceholder = 'Search…',
@@ -100,7 +160,8 @@ const Combobox = React.forwardRef<HTMLButtonElement, ComboboxProps>(
     ref
   ) => {
     const [open, setOpen] = React.useState(false)
-    const selected = options.find((option) => option.value === value)
+    const [currentValue, setValue] = useControllableString({ value, defaultValue, onValueChange })
+    const selected = options.find((option) => option.value === currentValue)
 
     return (
       <Popover open={open} onOpenChange={setOpen}>
@@ -148,11 +209,11 @@ const Combobox = React.forwardRef<HTMLButtonElement, ComboboxProps>(
                     keywords={[option.label, option.description ?? '']}
                     disabled={option.disabled}
                     onSelect={() => {
-                      onValueChange?.(option.value)
+                      setValue(option.value)
                       setOpen(false)
                     }}
                   >
-                    <OptionRow option={option} checked={option.value === value} />
+                    <OptionRow option={option} checked={option.value === currentValue} />
                   </CommandItem>
                 ))}
               </CommandGroup>
@@ -174,6 +235,7 @@ const ComboboxMultiple = React.forwardRef<HTMLButtonElement, ComboboxMultiplePro
     {
       options,
       value,
+      defaultValue,
       onValueChange,
       placeholder = 'Select options',
       searchPlaceholder = 'Search…',
@@ -187,11 +249,15 @@ const ComboboxMultiple = React.forwardRef<HTMLButtonElement, ComboboxMultiplePro
     ref
   ) => {
     const [open, setOpen] = React.useState(false)
-    const selectedValues = value ?? []
+    const [selectedValues, setSelectedValues] = useControllableStringArray({
+      value,
+      defaultValue,
+      onValueChange,
+    })
     const selected = options.filter((option) => selectedValues.includes(option.value))
 
     const toggle = (optionValue: string) =>
-      onValueChange?.(
+      setSelectedValues(
         selectedValues.includes(optionValue)
           ? selectedValues.filter((item) => item !== optionValue)
           : [...selectedValues, optionValue]
@@ -267,7 +333,7 @@ const ComboboxMultiple = React.forwardRef<HTMLButtonElement, ComboboxMultiplePro
           <button
             type="button"
             aria-label="Clear selection"
-            onClick={() => onValueChange?.([])}
+            onClick={() => setSelectedValues([])}
             className="absolute right-2 top-1/2 -translate-y-1/2 rounded-sm p-0.5 text-muted-foreground opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             <XIcon className="h-3.5 w-3.5" />

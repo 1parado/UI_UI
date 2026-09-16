@@ -169,3 +169,41 @@ describe('ComboboxMultiple', () => {
     ).not.toBeInTheDocument()
   })
 })
+
+/**
+ * `value` is optional: omitting it (and `defaultValue`) leaves the picker
+ * holding its own selection, which is the one-off case. Radix components in
+ * this library follow the same contract.
+ */
+describe('Combobox — uncontrolled', () => {
+  it('holds its own single selection', async () => {
+    const user = userEvent.setup()
+    render(<Combobox options={models} placeholder="Choose a model" />)
+
+    await user.click(screen.getByRole('button', { name: /choose a model/i }))
+    await user.click(await screen.findByRole('option', { name: /Claude Sonnet/ }))
+
+    expect(screen.getByRole('button', { name: /Claude Sonnet/ })).toBeInTheDocument()
+  })
+
+  it('starts from defaultValue', () => {
+    render(<Combobox options={models} defaultValue="gemini-pro" />)
+
+    expect(screen.getByRole('button', { name: /Gemini Pro/ })).toBeInTheDocument()
+  })
+
+  it('toggles its own picks and clears them', async () => {
+    const user = userEvent.setup()
+    render(<ComboboxMultiple options={models} defaultValue={['gpt-4o']} />)
+
+    await user.click(screen.getByRole('button', { name: /GPT-4o/ }))
+    await user.click(await screen.findByRole('option', { name: /Gemini Pro/ }))
+    await user.keyboard('{Escape}')
+
+    const trigger = screen.getByRole('button', { name: /GPT-4o.*Gemini Pro/i })
+    expect(trigger).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Clear selection' }))
+    expect(screen.queryByRole('button', { name: /GPT-4o/ })).not.toBeInTheDocument()
+  })
+})
