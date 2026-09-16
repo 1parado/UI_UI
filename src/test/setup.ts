@@ -26,3 +26,12 @@ if (typeof globalThis.ResizeObserver === 'undefined') {
 if (typeof Element !== 'undefined' && !Element.prototype.scrollIntoView) {
   Element.prototype.scrollIntoView = function scrollIntoView() {}
 }
+
+// `elementFromPoint` needs a layout engine to answer, so jsdom leaves it out
+// entirely. input-otp probes it from a timer to decide whether a password
+// manager's badge would cover its input; the resulting TypeError escapes as an
+// unhandled error and fails the run even though every assertion passed. A
+// `null` answer is what the probe would see for an uncovered input anyway.
+if (typeof document !== 'undefined' && !document.elementFromPoint) {
+  document.elementFromPoint = () => null
+}
