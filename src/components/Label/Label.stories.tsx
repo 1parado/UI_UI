@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Label } from './Label'
+import { Input } from '../Input'
 
 const meta: Meta<typeof Label> = {
   title: 'Components/Label',
@@ -44,6 +45,24 @@ export const WithDisabledInput: Story = {
         placeholder="Disabled input"
         className="peer flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm opacity-50"
       />
+    </div>
+  ),
+}
+
+export const FormRow: Story = {
+  render: () => (
+    <div className="grid w-[320px] gap-2">
+      <Label htmlFor="form-email">Email</Label>
+      <Input
+        id="form-email"
+        type="email"
+        placeholder="you@example.com"
+        aria-describedby="form-email-error"
+        invalid
+      />
+      <p id="form-email-error" className="text-sm text-destructive">
+        Please enter a valid email address.
+      </p>
     </div>
   ),
 }

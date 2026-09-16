@@ -11,6 +11,26 @@ const preview: Preview = {
     },
     layout: 'centered',
   },
+  globalTypes: {
+    theme: {
+      description: 'Global theme for components',
+      defaultValue: 'light',
+      toolbar: {
+        title: 'Theme',
+        icon: 'circlehollow',
+        items: ['light', 'dark'],
+        dynamicTitle: true,
+      },
+    },
+  },
+  decorators: [
+    (Story, context) => {
+      const theme = context.globals.theme as string
+      const root = document.documentElement
+      root.classList.toggle('dark', theme === 'dark')
+      return <Story />
+    },
+  ],
 }
 
 export default preview
