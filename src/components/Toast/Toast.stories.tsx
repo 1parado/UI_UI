@@ -20,91 +20,97 @@ const meta: Meta<typeof Toast> = {
 export default meta
 type Story = StoryObj<typeof Toast>
 
+const DefaultExample = () => {
+  const [open, setOpen] = React.useState(false)
+  const timerRef = React.useRef(0)
+
+  React.useEffect(() => () => clearTimeout(timerRef.current), [])
+
+  return (
+    <ToastProvider>
+      <Button
+        onClick={() => {
+          setOpen(false)
+          timerRef.current = window.setTimeout(() => setOpen(true), 100)
+        }}
+      >
+        Add to calendar
+      </Button>
+      <Toast open={open} onOpenChange={setOpen}>
+        <ToastTitle>Scheduled: Catch up</ToastTitle>
+        <ToastDescription asChild>
+          <time dateTime="2026-09-16T17:00">Today at 17:00 - 17:30</time>
+        </ToastDescription>
+        <ToastAction asChild altText="Schedule another event">
+          <Button variant="outline" size="sm">
+            Make another event
+          </Button>
+        </ToastAction>
+      </Toast>
+      <ToastViewport />
+    </ToastProvider>
+  )
+}
+
 export const Default: Story = {
-  render: () => {
-    const [open, setOpen] = React.useState(false)
-    const timerRef = React.useRef(0)
+  render: () => <DefaultExample />,
+}
 
-    React.useEffect(() => () => clearTimeout(timerRef.current), [])
+const DestructiveExample = () => {
+  const [open, setOpen] = React.useState(false)
 
-    return (
-      <ToastProvider>
-        <Button
-          onClick={() => {
-            setOpen(false)
-            timerRef.current = window.setTimeout(() => setOpen(true), 100)
-          }}
-        >
-          Add to calendar
-        </Button>
-        <Toast open={open} onOpenChange={setOpen}>
-          <ToastTitle>Scheduled: Catch up</ToastTitle>
-          <ToastDescription asChild>
-            <time dateTime="2026-09-16T17:00">Today at 17:00 - 17:30</time>
-          </ToastDescription>
-          <ToastAction asChild altText="Schedule another event">
-            <Button variant="outline" size="sm">
-              Make another event
-            </Button>
-          </ToastAction>
-        </Toast>
-        <ToastViewport />
-      </ToastProvider>
-    )
-  },
+  return (
+    <ToastProvider>
+      <Button
+        variant="destructive"
+        onClick={() => {
+          setOpen(false)
+          window.setTimeout(() => setOpen(true), 100)
+        }}
+      >
+        Delete file
+      </Button>
+      <Toast open={open} onOpenChange={setOpen} variant="destructive">
+        <ToastTitle>Deletion failed</ToastTitle>
+        <ToastDescription>
+          The file is locked by another process. Try again later.
+        </ToastDescription>
+        <ToastClose />
+      </Toast>
+      <ToastViewport />
+    </ToastProvider>
+  )
 }
 
 export const Destructive: Story = {
-  render: () => {
-    const [open, setOpen] = React.useState(false)
+  render: () => <DestructiveExample />,
+}
 
-    return (
-      <ToastProvider>
-        <Button
-          variant="destructive"
-          onClick={() => {
-            setOpen(false)
-            window.setTimeout(() => setOpen(true), 100)
-          }}
-        >
-          Delete file
-        </Button>
-        <Toast open={open} onOpenChange={setOpen} variant="destructive">
-          <ToastTitle>Deletion failed</ToastTitle>
-          <ToastDescription>
-            The file is locked by another process. Try again later.
-          </ToastDescription>
-          <ToastClose />
-        </Toast>
-        <ToastViewport />
-      </ToastProvider>
-    )
-  },
+const SuccessExample = () => {
+  const [open, setOpen] = React.useState(false)
+
+  return (
+    <ToastProvider>
+      <Button
+        variant="outline"
+        onClick={() => {
+          setOpen(false)
+          window.setTimeout(() => setOpen(true), 100)
+        }}
+      >
+        Save changes
+      </Button>
+      <Toast open={open} onOpenChange={setOpen} variant="success">
+        <ToastTitle>Saved</ToastTitle>
+        <ToastDescription>
+          Your changes have been published to production.
+        </ToastDescription>
+      </Toast>
+      <ToastViewport />
+    </ToastProvider>
+  )
 }
 
 export const Success: Story = {
-  render: () => {
-    const [open, setOpen] = React.useState(false)
-
-    return (
-      <ToastProvider>
-        <Button
-          variant="outline"
-          onClick={() => {
-            setOpen(false)
-            window.setTimeout(() => setOpen(true), 100)
-          }}
-        >
-          Save changes
-        </Button>
-        <Toast open={open} onOpenChange={setOpen} variant="success">
-          <ToastTitle>Saved</ToastTitle>
-          <ToastDescription>
-            Your changes have been published to production.
-          </ToastDescription>
-        </Toast>
-        <ToastViewport />
-      </ToastProvider>
-    )
-  },
+  render: () => <SuccessExample />,
 }

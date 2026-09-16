@@ -44,42 +44,40 @@ export const WithLabel: Story = {
   ),
 }
 
-export const IndeterminateControlled: Story = {
-  render: () => {
-    const items = ['Orders', 'Payments', 'Deliveries']
-    const [checked, setChecked] = React.useState<string[]>(['Orders'])
-    const allChecked = checked.length === items.length
-    const someChecked = checked.length > 0 && !allChecked
+const IndeterminateGroup = () => {
+  const items = ['Orders', 'Payments', 'Deliveries']
+  const [checked, setChecked] = React.useState<string[]>(['Orders'])
+  const allChecked = checked.length === items.length
+  const someChecked = checked.length > 0 && !allChecked
 
-    return (
-      <div className="grid gap-2">
-        <div className="flex items-center gap-2">
+  return (
+    <div className="grid gap-2">
+      <div className="flex items-center gap-2">
+        <Checkbox
+          id="select-all"
+          checked={allChecked ? true : someChecked ? 'indeterminate' : false}
+          onCheckedChange={(state) => setChecked(state === true ? items : [])}
+        />
+        <Label htmlFor="select-all">Select all</Label>
+      </div>
+      {items.map((item) => (
+        <div key={item} className="flex items-center gap-2 pl-6">
           <Checkbox
-            id="select-all"
-            checked={allChecked ? true : someChecked ? 'indeterminate' : false}
+            id={item}
+            checked={checked.includes(item)}
             onCheckedChange={(state) =>
-              setChecked(state === true ? items : [])
+              setChecked((prev) =>
+                state === true ? [...prev, item] : prev.filter((i) => i !== item)
+              )
             }
           />
-          <Label htmlFor="select-all">Select all</Label>
+          <Label htmlFor={item}>{item}</Label>
         </div>
-        {items.map((item) => (
-          <div key={item} className="flex items-center gap-2 pl-6">
-            <Checkbox
-              id={item}
-              checked={checked.includes(item)}
-              onCheckedChange={(state) =>
-                setChecked((prev) =>
-                  state === true
-                    ? [...prev, item]
-                    : prev.filter((i) => i !== item)
-                )
-              }
-            />
-            <Label htmlFor={item}>{item}</Label>
-          </div>
-        ))}
-      </div>
-    )
-  },
+      ))}
+    </div>
+  )
+}
+
+export const IndeterminateControlled: Story = {
+  render: () => <IndeterminateGroup />,
 }

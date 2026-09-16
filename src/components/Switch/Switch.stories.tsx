@@ -45,16 +45,22 @@ export const DisabledChecked: Story = {
   },
 }
 
+const ControlledExample = () => {
+  const [on, setOn] = React.useState(true)
+  return (
+    <div className="flex items-center gap-3">
+      <Switch
+        checked={on}
+        onCheckedChange={setOn}
+        aria-label="Toggle notifications"
+      />
+      <span className="text-sm text-muted-foreground">
+        Notifications are {on ? 'enabled' : 'disabled'}
+      </span>
+    </div>
+  )
+}
+
 export const Controlled: Story = {
-  render: () => {
-    const [on, setOn] = React.useState(true)
-    return (
-      <div className="flex items-center gap-3">
-        <Switch checked={on} onCheckedChange={setOn} aria-label="Toggle notifications" />
-        <span className="text-sm text-muted-foreground">
-          Notifications are {on ? 'enabled' : 'disabled'}
-        </span>
-      </div>
-    )
-  },
+  render: () => <ControlledExample />,
 }

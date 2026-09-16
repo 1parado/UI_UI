@@ -19,10 +19,10 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
+      // This package is a component library, not an app: co-exporting variant
+      // helpers (`buttonVariants`, `badgeVariants`, …) next to their component
+      // is the intended shadcn-style API, so the Fast Refresh rule is noise.
+      'react-refresh/only-export-components': 'off',
     },
   }
 )

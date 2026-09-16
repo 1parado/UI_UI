@@ -1,3 +1,4 @@
+import * as React from 'react'
 import type { Preview } from '@storybook/react'
 import '../src/styles/globals.css'
 
@@ -28,7 +29,9 @@ const preview: Preview = {
       const theme = context.globals.theme as string
       const root = document.documentElement
       root.classList.toggle('dark', theme === 'dark')
-      return <Story />
+      // NOTE: no JSX here — this file is `.ts`, and esbuild only enables JSX
+      // for `.tsx`/`.jsx`, so `<Story />` would break `storybook build`.
+      return React.createElement(Story)
     },
   ],
 }
