@@ -85,6 +85,9 @@ it is live at <https://1parado.github.io/UI_UI/>.
 - **Switch** — accessible toggle
 - **Toggle** — two-state button for formatting and view switches
 - **ToggleGroup** — a row of related toggles, single or multiple
+- **Combobox** — searchable single/multi select with the list inside a popover
+- **Calendar** — date grid built on `react-day-picker` v9: single, range or multiple
+- **DatePicker / DateRangePicker** — a calendar behind a popover trigger, with a clear affordance
 
 **Layout & structure**
 - **Card** — header / content / footer composition
@@ -96,16 +99,24 @@ it is live at <https://1parado.github.io/UI_UI/>.
 - **Tabs** — keyboard-navigable tab panels
 - **ScrollArea** — custom-scrollbar viewport for long lists
 - **Typography** — `Heading`, `Text`, `Small`, `Blockquote`, `InlineCode`
+- **AspectRatio** — locks a box to a ratio so media cannot shift the layout
+- **ButtonGroup** — attaches related buttons into one control (segmented choice, split action)
+- **Table** — table primitives with an overflow-scroll container
+- **DataTable** — sortable, paginated table driven by column definitions
+- **Sidebar** — collapsible app rail: provider with persistence and ⌘B, groups, menus, mobile sheet
+- **NavigationMenu** — site navigation whose panels share one animated viewport
 
 **Overlays**
 - **Dialog** — modal with focus trap, ESC close, scroll lock
 - **AlertDialog** — confirmation that blocks outside interaction, focus on Cancel
 - **Sheet** — panel sliding in from any edge (settings, filters, details)
+- **Drawer** — drag-to-dismiss bottom sheet for touch-first flows
 - **Popover** — anchored floating panel
 - **HoverCard** — hover preview for an entity or link target
 - **Tooltip** — hover/focus hints
 - **DropdownMenu** — action menus with labels and separators
 - **ContextMenu** — right-click menus, same API as `DropdownMenu`
+- **Menubar** — desktop-style File / Edit / View strip with submenus
 - **Command** — filterable command list and ⌘K palette
 
 **Feedback**

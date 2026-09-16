@@ -387,6 +387,147 @@ export type {
   InlineCodeProps,
 } from './components/Typography'
 
+// Components — layout and data
+export { AspectRatio } from './components/AspectRatio'
+export type { AspectRatioProps } from './components/AspectRatio'
+
+export { ButtonGroup, ButtonGroupSeparator, buttonGroupVariants } from './components/ButtonGroup'
+export type { ButtonGroupProps, ButtonGroupSeparatorProps } from './components/ButtonGroup'
+
+export {
+  Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableCaption,
+} from './components/Table'
+export type {
+  TableProps,
+  TableHeaderProps,
+  TableBodyProps,
+  TableFooterProps,
+  TableHeadProps,
+  TableRowProps,
+  TableCellProps,
+  TableCaptionProps,
+} from './components/Table'
+
+export { DataTable } from './components/DataTable'
+export type { DataTableColumn, DataTableProps, SortDirection } from './components/DataTable'
+
+export { Calendar, CalendarDayButton, CalendarChevron } from './components/Calendar'
+export type { CalendarProps } from './components/Calendar'
+
+export { DatePicker, DateRangePicker, formatDay } from './components/DatePicker'
+export type { DatePickerProps, DateRangePickerProps } from './components/DatePicker'
+
+export { Combobox, ComboboxMultiple } from './components/Combobox'
+export type { ComboboxOption, ComboboxProps, ComboboxMultipleProps } from './components/Combobox'
+
+export {
+  Drawer,
+  DrawerPortal,
+  DrawerOverlay,
+  DrawerTrigger,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerFooter,
+  DrawerTitle,
+  DrawerDescription,
+} from './components/Drawer'
+export type {
+  DrawerContentProps,
+  DrawerOverlayProps,
+  DrawerHeaderProps,
+  DrawerFooterProps,
+  DrawerTitleProps,
+  DrawerDescriptionProps,
+} from './components/Drawer'
+
+export {
+  Menubar,
+  MenubarMenu,
+  MenubarTrigger,
+  MenubarContent,
+  MenubarItem,
+  MenubarItemIndicator,
+  MenubarCheckboxItem,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarLabel,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarGroup,
+  MenubarPortal,
+  MenubarSub,
+  MenubarSubTrigger,
+  MenubarSubContent,
+} from './components/Menubar'
+export type {
+  MenubarTriggerProps,
+  MenubarContentProps,
+  MenubarItemProps,
+  MenubarCheckboxItemProps,
+  MenubarRadioItemProps,
+  MenubarLabelProps,
+  MenubarSeparatorProps,
+  MenubarShortcutProps,
+  MenubarSubTriggerProps,
+  MenubarSubContentProps,
+} from './components/Menubar'
+
+export {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuContent,
+  NavigationMenuTrigger,
+  NavigationMenuLink,
+  NavigationMenuIndicator,
+  NavigationMenuViewport,
+  navigationMenuTriggerStyle,
+} from './components/NavigationMenu'
+
+export {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupAction,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInput,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuAction,
+  SidebarMenuBadge,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSkeleton,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+  SidebarProvider,
+  SidebarRail,
+  SidebarSeparator,
+  SidebarTrigger,
+  sidebarMenuButtonVariants,
+  useSidebar,
+} from './components/Sidebar'
+export type {
+  SidebarContextValue,
+  SidebarMenuButtonProps,
+  SidebarMenuSubButtonProps,
+  SidebarProps,
+  SidebarProviderProps,
+  SidebarTriggerProps,
+} from './components/Sidebar'
+
 // AI surfaces — conversation
 export {
   Message,
