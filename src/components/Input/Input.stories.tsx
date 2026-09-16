@@ -13,6 +13,9 @@ const meta: Meta<typeof Input> = {
     disabled: {
       control: 'boolean',
     },
+    invalid: {
+      control: 'boolean',
+    },
     placeholder: {
       control: 'text',
     },
@@ -52,5 +55,13 @@ export const Disabled: Story = {
 export const WithValue: Story = {
   args: {
     defaultValue: 'Hello world',
+  },
+}
+
+export const Invalid: Story = {
+  args: {
+    invalid: true,
+    defaultValue: 'not-an-email',
+    placeholder: 'Email address',
   },
 }

@@ -42,11 +42,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         disabled={disabled || loading}
+        aria-busy={loading || undefined}
+        aria-live={loading ? 'polite' : undefined}
         {...props}
       >
         {loading && (
           <svg
-            className="h-4 w-4 animate-spin"
+            className={cn('animate-spin', size === 'icon' ? 'h-5 w-5' : size === 'sm' ? 'h-3.5 w-3.5' : 'h-4 w-4')}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"

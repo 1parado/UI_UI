@@ -29,8 +29,16 @@ pnpm build
 ## Components
 
 - **Button** — variants, sizes, loading state
-- **Input** — text input with consistent styling
+- **Input** — text input with consistent styling and invalid state
+- **Textarea** — multi-line input with invalid state and resize control
+- **Label** — accessible form labels with disabled peer styling
+- **Switch** — accessible toggle with checked/unchecked states
 - **Card** — header / content / footer composition
+- **Badge** — status badges in multiple variants
+- **Alert** — banners (default / destructive / success / warning) with title & description
+- **Avatar** — image with automatic fallback
+- **Skeleton** — loading placeholder
+- **Progress** — animated progress bar with ARIA attributes
 
 ## Design Tokens
 
