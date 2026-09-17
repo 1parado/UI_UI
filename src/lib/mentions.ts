@@ -55,8 +55,9 @@ export function activeMention(
 /**
  * Swap the matched text for a completed mention.
  *
- * One trailing space is inserted so the next word is not swallowed into the
- * handle — `@ada|` becomes `@ada |` rather than `@adax`.
+ * One trailing space is added after the handle — but only when the text does
+ * not already start with one, because accepting `@jo` in "cc @jo about it"
+ * should read "cc @joana about it", not "cc @joana  about it".
  */
 export function applyMention(
   text: string,
@@ -66,7 +67,8 @@ export function applyMention(
 ): { text: string; caret: number } {
   const before = text.slice(0, match.start)
   const after = text.slice(match.start + trigger.length + match.query.length)
-  const inserted = `${trigger}${replacement} `
+  const gap = after === '' || !/^\s/.test(after) ? ' ' : ''
+  const inserted = `${trigger}${replacement}${gap}`
 
   return {
     text: `${before}${inserted}${after}`,

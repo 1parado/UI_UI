@@ -5,7 +5,10 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
-  { ignores: ['dist', 'storybook-static', 'coverage', 'node_modules'] },
+  // `.stale-*` is what the Storybook build leaves behind when the safe-delete
+  // guard refuses to remove the previous output: ignored by git, but still a
+  // directory full of generated `.d.ts` files ESLint would otherwise read.
+  { ignores: ['dist', 'storybook-static', '.stale-*', 'coverage', 'node_modules'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],

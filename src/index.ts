@@ -1022,3 +1022,47 @@ export {
   type AutoCompleteFilter,
   type AutoCompleteOption,
 } from './lib/autocomplete'
+
+// Input, media and guidance.
+export { Mentions } from './components/Mentions'
+export type { MentionsProps } from './components/Mentions'
+
+export {
+  activeMention,
+  applyMention,
+  matchMentions,
+  type MentionMatch,
+  type MentionOption,
+} from './lib/mentions'
+
+export { Image } from './components/Image'
+export type { ImageFit, ImageProps, ImageStatus } from './components/Image'
+
+export { Tour } from './components/Tour'
+export type { TourProps, TourStep } from './components/Tour'
+
+export {
+  maskRects,
+  placeCard,
+  spotlightRect,
+  type Rect as TourRect,
+  type TourPlacement,
+} from './lib/tour'
+
+export {
+  List,
+  ListDescription,
+  ListHeader,
+  ListItem,
+  ListItemActions,
+  ListItemContent,
+  ListTitle,
+  listVariants,
+} from './components/List'
+export type {
+  ListDescriptionProps,
+  ListItemProps,
+  ListProps,
+  ListSectionProps,
+  ListTitleProps,
+} from './components/List'

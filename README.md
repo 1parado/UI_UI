@@ -166,10 +166,14 @@ it is live at <https://1parado.github.io/UI_UI/>.
 - **TreeSelect** — a tree in a dropdown: checked folders cascade to their branch, half-covered ones draw a dash, and search prunes to what it can still reach
 - **Transfer** — two lists whose whole state is *which keys are on the right*, so `targetKeys` survives a round trip through a server
 - **AutoComplete** — a field that suggests but accepts anything typed; options may be bare strings, grouped, or carry hidden keywords
+- **Mentions** — `@`-mentions read off the caret rather than kept as state, so Escape needs no escape hatch and a pick splices the handle in place
+- **Tour / Guide** — walks a page element by element: four dimming bands rather than one cut-out shape, the card flipping sides rather than hanging off screen, and a missing target centred instead of skipped
 
 **Other**
 - **Avatar** — image with automatic fallback
 - **Kbd / KbdGroup** — keyboard keys and shortcuts
+- **Image** — deferred off-screen loading, a held layout, a graceful failure, and a click-to-open preview that zooms
+- **List** — a list container owning what sits above and below the rows, the dividers between them, and the skeleton rows that stop it claiming to be empty while fetching
 
 ### AI surfaces
 

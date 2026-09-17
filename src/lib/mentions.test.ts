@@ -22,7 +22,7 @@ describe('activeMention', () => {
   })
 
   it('stops at a second trigger', () => {
-    expect(activeMention('@@ weird @jo', 12)).toEqual({ start: 10, query: 'jo' })
+    expect(activeMention('@@ weird @jo', 12)).toEqual({ start: 9, query: 'jo' })
   })
 
   it('ends the query at whitespace', () => {
@@ -53,10 +53,17 @@ describe('applyMention', () => {
     })
   })
 
-  it('works mid-sentence', () => {
-    expect(applyMention('cc @jo about it', { start: 3, query: '' }, '@', 'joana')).toEqual({
-      text: 'cc @joana  about it'.replace('  ', ' '),
+  it('works mid-sentence without doubling the space that was already there', () => {
+    expect(applyMention('cc @jo about it', { start: 3, query: 'jo' }, '@', 'joana')).toEqual({
+      text: 'cc @joana about it',
       caret: 9,
+    })
+  })
+
+  it('adds the trailing gap itself when there is no text after', () => {
+    expect(applyMention('ping @ad', { start: 5, query: 'ad' }, '@', 'ada')).toEqual({
+      text: 'ping @ada ',
+      caret: 10,
     })
   })
 
