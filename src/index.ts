@@ -772,3 +772,164 @@ export {
   parseAccept,
   type AcceptGroups,
 } from './lib/upload'
+
+// Forms, direction and the list primitives that compose them.
+export {
+  Controller,
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  FormProvider,
+  useFieldArray,
+  useForm,
+  useFormContext,
+  useFormField,
+  useWatch,
+} from './components/Form'
+export type {
+  ControllerProps,
+  FieldError,
+  FieldErrors,
+  FieldPath,
+  FieldValues,
+  FormControlProps,
+  FormDescriptionProps,
+  FormItemProps,
+  FormLabelProps,
+  FormMessageProps,
+  SubmitHandler,
+  UseFormReturn,
+} from './components/Form'
+
+export { NativeSelect } from './components/NativeSelect'
+export type { NativeSelectProps } from './components/NativeSelect'
+
+export {
+  DirectionProvider,
+  resolveDirection,
+  useDirection,
+  useDirectionControls,
+} from './components/Direction'
+export type {
+  Direction,
+  DirectionControls,
+  DirectionProviderProps,
+} from './components/Direction'
+
+export {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemFooter,
+  ItemGroup,
+  ItemHeader,
+  ItemMedia,
+  ItemSeparator,
+  ItemTitle,
+} from './components/Item'
+export type {
+  ItemActionsProps,
+  ItemContentProps,
+  ItemDescriptionProps,
+  ItemFooterProps,
+  ItemGroupProps,
+  ItemHeaderProps,
+  ItemMediaProps,
+  ItemProps,
+  ItemSeparatorProps,
+  ItemTitleProps,
+} from './components/Item'
+
+export { Marker } from './components/Marker'
+export type { MarkerProps } from './components/Marker'
+
+export { Bubble, BubbleGroup, BubbleMeta } from './components/Bubble'
+export type {
+  BubbleGroupProps,
+  BubbleLabels,
+  BubbleMetaProps,
+  BubbleProps,
+  BubbleSide,
+  BubbleStatus,
+} from './components/Bubble'
+
+export { Questionnaire } from './components/Questionnaire'
+export type {
+  Question,
+  QuestionAnswer,
+  QuestionOption,
+  QuestionnaireAnswers,
+  QuestionnaireLabels,
+  QuestionnaireMessages,
+  QuestionnaireProgress,
+  QuestionnaireProps,
+  QuestionType,
+} from './components/Questionnaire'
+
+export { VirtualList } from './components/VirtualList'
+export type { VirtualListProps } from './components/VirtualList'
+
+export {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  useCarousel,
+} from './components/Carousel'
+export type {
+  CarouselApi,
+  CarouselArrowProps,
+  CarouselContentProps,
+  CarouselItemProps,
+  CarouselLabels,
+  CarouselProps,
+} from './components/Carousel'
+
+export { ResizableHandle, ResizablePanel, ResizablePanelGroup } from './components/Resizable'
+export type { ResizableHandleProps, ResizablePanelGroupProps } from './components/Resizable'
+
+export {
+  Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  ChartContainer,
+  ChartLegend,
+  ChartTooltip,
+  ChartTooltipContent,
+  ComposedChart,
+  Line,
+  LineChart,
+  Pie,
+  PieChart,
+  RadialBar,
+  RadialBarChart,
+  ReferenceLine,
+  Scatter,
+  ScatterChart,
+  XAxis,
+  YAxis,
+  ZAxis,
+  chartPalette,
+  useChart,
+} from './components/Chart'
+export type {
+  ChartConfig,
+  ChartContainerProps,
+  ChartLegendProps,
+  ChartSeriesConfig,
+  ChartTooltipContentProps,
+  ChartTooltipItem,
+  ChartTooltipProps,
+} from './components/Chart'
+
+export { QRCode } from './components/QRCode'
+export type { QRCodeImageSettings, QRCodeLevel, QRCodeProps } from './components/QRCode'

@@ -88,6 +88,9 @@ it is live at <https://1parado.github.io/UI_UI/>.
 - **Combobox** — searchable single/multi select with the list inside a popover
 - **Calendar** — date grid built on `react-day-picker` v9: single, range or multiple
 - **DatePicker / DateRangePicker** — a calendar behind a popover trigger, with a clear affordance
+- **NativeSelect** — the platform `<select>`, styled to match: a chevron overlay, sizes, invalid state
+- **Form** — react-hook-form binding: `Form` / `FormField` / `FormItem` / `FormControl` / `FormLabel` / `FormMessage` wired to this library's controls
+- **Questionnaire** — a survey built from a question schema: choice, multi-choice, rating, text and number questions, validation, and a progress bar that skips optional ones
 
 **Layout & structure**
 - **Card** — header / content / footer composition
@@ -105,6 +108,11 @@ it is live at <https://1parado.github.io/UI_UI/>.
 - **DataTable** — sortable, paginated table driven by column definitions
 - **Sidebar** — collapsible app rail: provider with persistence and ⌘B, groups, menus, mobile sheet
 - **NavigationMenu** — site navigation whose panels share one animated viewport
+- **Item** — list row composition (media / content / actions) for feeds, results and settings pages
+- **DirectionProvider** — LTR/RTL context: components read it, and `useDirectionControls` lets a settings page flip it
+- **Resizable** — draggable panel splits with keyboard resizing and optional `localStorage` persistence
+- **VirtualList** — windowed rendering over `@tanstack/react-virtual` for thousand-row lists
+- **Carousel** — embla-backed slides with arrows, dot indicators and a same-height track
 
 **Overlays**
 - **Dialog** — modal with focus trap, ESC close, scroll lock
@@ -137,6 +145,8 @@ it is live at <https://1parado.github.io/UI_UI/>.
 - **Sparkline** — axis-free trend line for table cells and stat cards
 - **RingProgress** — single-ratio progress ring, same ARIA contract as `Progress`
 - **Stat** — one metric: label, figure, change and an optional sparkline
+- **Chart** — recharts connected to `--chart-*` design tokens: `ChartContainer` for sizing and theming, `ChartTooltip` / `ChartLegend` for the dressing, and the recharts chart primitives re-exported
+- **QRCode** — `qrcode.react` on a forced white plate with a rounded frame, so it stays scannable in dark mode
 - **NotificationCenter / NotificationList** — bell with an unread count over an inbox list
   grouped into unread and read
 
@@ -163,6 +173,8 @@ rather than replacing them — a chat surface is `ConversationSidebar` +
 - **Composer** — prompt input: auto-growing textarea, Enter to send, IME-safe, send/stop
 - **StreamingText** — plain-text stream with caret and interrupted state
 - **TypingIndicator** — "thinking" dots
+- **Bubble / BubbleGroup** — chat bubbles with in/out sides, an optional tail, delivery status ticks and a meta line
+- **Marker** — the "new messages" divider inside a transcript, with the unread count as its label
 
 **Generated output**
 - **MarkdownRenderer** — markdown → library typography, fences become `CodeBlock`
