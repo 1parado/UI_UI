@@ -691,3 +691,84 @@ export type { FeedbackProps, FeedbackValue } from './components/Feedback'
 
 export { UsageMeter } from './components/UsageMeter'
 export type { UsageMeterProps } from './components/UsageMeter'
+
+// AI surfaces — code, files and process output
+export { Diff, CodeDiff } from './components/Diff'
+export type { DiffProps, CodeDiffProps, DiffView, DiffLabels } from './components/Diff'
+
+export { Tree, FileTree } from './components/Tree'
+export type { TreeProps, TreeNode, FileTreeProps } from './components/Tree'
+
+export { Terminal, LogViewer } from './components/Terminal'
+export type {
+  TerminalProps,
+  TerminalLabels,
+  LogLine,
+  LogViewerProps,
+  LogViewerLabels,
+  LogEntry,
+} from './components/Terminal'
+
+export { FileUpload } from './components/FileUpload'
+export type {
+  FileUploadProps,
+  FileUploadLabels,
+  UploadItem,
+  UploadStatus,
+  UploadHandler,
+  UploadHandlerOptions,
+  UploadRejection,
+  UploadRejectReason,
+} from './components/FileUpload'
+
+// Diff, ANSI, log levels and paths — the maths behind the components above,
+// exported for callers doing their own rendering.
+export {
+  diffLines,
+  diffStats,
+  formatUnifiedDiff,
+  hasChanges,
+  splitLines,
+  toHunks,
+  toSplitRows,
+  type DiffHunk,
+  type DiffLine,
+  type DiffLineType,
+  type DiffSplitRow,
+  type DiffStats,
+  type UnifiedTextOptions,
+} from './lib/diff'
+
+export {
+  ANSI_NAMED,
+  paletteColor,
+  parseAnsi,
+  stripAnsi,
+  type AnsiColor,
+  type AnsiToken,
+} from './lib/ansi'
+
+export {
+  LOG_LEVELS,
+  countLevels,
+  parseLogLevel,
+  type LogLevel,
+} from './lib/log'
+
+export {
+  buildFileTree,
+  collectDirectoryIds,
+  fileExtension,
+  fileKind,
+  splitPath,
+  type BuildFileTreeOptions,
+  type FileKind,
+  type FileTreeEntry,
+} from './lib/file-tree'
+
+export {
+  describeAccept,
+  matchesAccept,
+  parseAccept,
+  type AcceptGroups,
+} from './lib/upload'

@@ -180,6 +180,29 @@ rather than replacing them — a chat surface is `ConversationSidebar` +
 - **Feedback** — rate up/down and regenerate
 - **UsageMeter** — token / cost budget readout with warn and over-limit states
 
+**Code, files and process output**
+
+The four components a coding agent needs to show its work. Each one carries the
+parsing it depends on in `lib/`, so none of them adds a dependency: a diff
+without a diff engine, ANSI colour without a terminal emulator, a file tree
+without a path library.
+
+- **Diff / CodeDiff** — line diff with foldable unchanged runs, a unified or
+  split view, line numbers and a copy action that writes a real patch file.
+  The alignment is `lib/diff`, which trims the common head and tail first and
+  only runs the LCS over the changed middle. Lines are not syntax highlighted.
+- **Tree / FileTree** — one tab stop, arrow keys, `aria-level` on a flattened
+  list. Selecting a folder opens it. `FileTree` takes a list of paths and builds
+  the nesting itself (`lib/file-tree`), with an icon per file kind.
+- **Terminal / LogViewer** — 16/256/24-bit ANSI colour, a ring buffer, a
+  timestamp column and output that follows itself until you scroll up.
+  `LogViewer` adds a level chip read off each line (`lib/log`), a solo-style
+  level filter and a search box. The surface is dark in both themes, which is
+  why its colours come from `--terminal-*` / `--ansi-*`.
+- **FileUpload** — drop zone plus queue: type, size and count limits enforced on
+  dropped files as well as picked ones, per-file progress, retry, abort on
+  remove or unmount, controlled or uncontrolled.
+
 ## Consuming the library
 
 ```bash
@@ -259,6 +282,15 @@ Dark mode is toggled by adding the `dark` class to `<html>`.
 ## Design Tokens
 
 All components use CSS variables for theming. See `src/styles/globals.css`.
+
+Copy the whole `:root` / `.dark` block when consuming the library — the tokens
+are one set, not a menu. Two groups are worth calling out:
+
+- `--code-*` — mapped onto `.hljs-*` in `globals.css`, so a highlighted fence
+  follows the theme without a third-party stylesheet.
+- `--terminal-*` and `--ansi-*` — the terminal surface stays dark in both
+  themes, so these are declared once in `:root` rather than twice. A light-mode
+  terminal stops reading as a terminal, and one palette beats two.
 
 ## Docs
 
