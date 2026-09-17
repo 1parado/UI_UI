@@ -128,6 +128,14 @@ it is live at <https://1parado.github.io/UI_UI/>.
 - **Empty** — empty-state composition
 - **Badge** — status badges
 
+**Status & data display**
+- **Timeline** — ordered activity list; entries carry a status, a timestamp and any content
+- **Descriptions** — definition list for detail panels, multi-column and label-left
+- **Stepper** — multi-step flow with completed / current / error states, horizontal or vertical
+- **Rating** — star rating driven as one slider, so half steps and keyboard control both work
+- **TagInput** — free-text tags; Enter or comma commits, Backspace removes, IME-safe
+- **Sparkline** — axis-free trend line for table cells and stat cards
+
 **Other**
 - **Avatar** — image with automatic fallback
 - **Kbd / KbdGroup** — keyboard keys and shortcuts

@@ -528,6 +528,23 @@ export type {
   SidebarTriggerProps,
 } from './components/Sidebar'
 
+// Components — status and data display
+export { Timeline, TimelineItem } from './components/Timeline'
+export type { TimelineProps, TimelineItemProps } from './components/Timeline'
+export { Descriptions, DescriptionsItem } from './components/Descriptions'
+export type {
+  DescriptionsProps,
+  DescriptionsItemProps,
+} from './components/Descriptions'
+export { Stepper, StepperItem } from './components/Stepper'
+export type { StepperProps, StepperItemProps, StepperState } from './components/Stepper'
+export { Rating } from './components/Rating'
+export type { RatingProps } from './components/Rating'
+export { TagInput } from './components/TagInput'
+export type { TagInputProps } from './components/TagInput'
+export { Sparkline } from './components/Sparkline'
+export type { SparklineProps } from './components/Sparkline'
+
 // AI surfaces — conversation
 export {
   Message,
