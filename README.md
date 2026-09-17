@@ -162,6 +162,10 @@ it is live at <https://1parado.github.io/UI_UI/>.
 - **TimePicker / TimeColumns / DateTimePicker** — hour and minute columns, 24- or 12-hour
   display, optional native fallbacks
 - **MultiSelect** — grouped options, select-all and an optional ceiling on selections
+- **Cascader** — one answer per level of a tree, drawn as a column per level; the walk lives in `lib/cascader`
+- **TreeSelect** — a tree in a dropdown: checked folders cascade to their branch, half-covered ones draw a dash, and search prunes to what it can still reach
+- **Transfer** — two lists whose whole state is *which keys are on the right*, so `targetKeys` survives a round trip through a server
+- **AutoComplete** — a field that suggests but accepts anything typed; options may be bare strings, grouped, or carry hidden keywords
 
 **Other**
 - **Avatar** — image with automatic fallback

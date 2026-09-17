@@ -973,3 +973,52 @@ export {
   scrollTargetFor,
   type AnchorSection,
 } from './lib/anchor'
+
+// Pickers that read trees or two lists — cascaders, transfers, suggestions.
+export { Cascader, cascaderVariants } from './components/Cascader'
+export type { CascaderProps } from './components/Cascader'
+
+export {
+  columnsFor,
+  findOptionPath,
+  isLeaf,
+  leafPaths,
+  optionLabels,
+  searchLeafPaths,
+  type CascaderLeafPath,
+  type CascaderOption,
+} from './lib/cascader'
+
+export { TreeSelect, treeSelectVariants } from './components/TreeSelect'
+export type { TreeSelectProps } from './components/TreeSelect'
+
+export {
+  applyToggle,
+  filterTree,
+  nodeState,
+  visibleRows,
+  type TreeRow,
+  type TreeSelectNode,
+} from './lib/tree-select'
+
+export { Transfer } from './components/Transfer'
+export type { TransferProps } from './components/Transfer'
+
+export {
+  filterItems,
+  targetKeysAfterMove,
+  toggleSelectAll,
+  type TransferDirection,
+  type TransferItem,
+} from './lib/transfer'
+
+export { AutoComplete } from './components/AutoComplete'
+export type { AutoCompleteProps } from './components/AutoComplete'
+
+export {
+  groupOptions,
+  matchOptions,
+  optionText,
+  type AutoCompleteFilter,
+  type AutoCompleteOption,
+} from './lib/autocomplete'
