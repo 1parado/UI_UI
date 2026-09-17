@@ -341,3 +341,58 @@ export const DownloadIcon = (props: IconProps) => (
     <line x1="12" y1="15" x2="12" y2="3" />
   </svg>
 )
+
+export const CheckCircleIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+    <path d="m9 11 3 3L22 4" />
+  </svg>
+)
+
+export const XCircleIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <circle cx="12" cy="12" r="10" />
+    <path d="m15 9-6 6" />
+    <path d="m9 9 6 6" />
+  </svg>
+)
+
+export const AlertTriangleIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+    <path d="M12 9v4" />
+    <path d="M12 17h.01" />
+  </svg>
+)
+
+export const InfoIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <circle cx="12" cy="12" r="10" />
+    <path d="M12 16v-4" />
+    <path d="M12 8h.01" />
+  </svg>
+)
+
+export const ArrowUpToLineIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <path d="M5 3h14" />
+    <path d="m18 13-6-6-6 6" />
+    <path d="M12 21V7" />
+  </svg>
+)
+
+export const HashIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <line x1="4" x2="20" y1="9" y2="9" />
+    <line x1="4" x2="20" y1="15" y2="15" />
+    <line x1="10" x2="8" y1="3" y2="21" />
+    <line x1="16" x2="14" y1="3" y2="21" />
+  </svg>
+)
+
+export const BanIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <circle cx="12" cy="12" r="10" />
+    <path d="m4.9 4.9 14.2 14.2" />
+  </svg>
+)

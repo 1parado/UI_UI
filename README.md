@@ -108,6 +108,10 @@ it is live at <https://1parado.github.io/UI_UI/>.
 - **DataTable** — sortable, paginated table driven by column definitions
 - **Sidebar** — collapsible app rail: provider with persistence and ⌘B, groups, menus, mobile sheet
 - **NavigationMenu** — site navigation whose panels share one animated viewport
+- **Segmented** — one choice out of a few, all visible; a radio group to AT (one tab stop, arrow keys), unlike a row of toggles
+- **Affix** — pins a child past a scroll threshold and holds its box, so the layout around it does not jump
+- **Anchor** — table of contents as real `#` links, highlighting the section you are in
+- **FloatButton / FloatButtonGroup / BackTop** — floating action button, a stack behind one corner, and a back-to-top that stays out of the tab order until it is useful
 - **Item** — list row composition (media / content / actions) for feeds, results and settings pages
 - **DirectionProvider** — LTR/RTL context: components read it, and `useDirectionControls` lets a settings page flip it
 - **Resizable** — draggable panel splits with keyboard resizing and optional `localStorage` persistence
@@ -135,6 +139,8 @@ it is live at <https://1parado.github.io/UI_UI/>.
 - **Skeleton** — loading placeholder
 - **Empty** — empty-state composition
 - **Badge** — status badges
+- **Result** — the end of a flow: success, error, warning, 404, 403, 500, with a title, an explanation and actions
+- **Watermark** — canvas-tiled mark over its children, `aria-hidden` and click-through, restored if deleted in devtools
 
 **Status & data display**
 - **Timeline** — ordered activity list; entries carry a status, a timestamp and any content

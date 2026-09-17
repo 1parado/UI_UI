@@ -933,3 +933,43 @@ export type {
 
 export { QRCode } from './components/QRCode'
 export type { QRCodeImageSettings, QRCodeLevel, QRCodeProps } from './components/QRCode'
+
+// Navigation, pinning and end-states — the pieces a long page needs.
+export { Segmented, SegmentedItem } from './components/Segmented'
+export type {
+  SegmentedItemProps,
+  SegmentedLabels,
+  SegmentedOption,
+  SegmentedProps,
+} from './components/Segmented'
+
+export { Affix } from './components/Affix'
+export type { AffixProps } from './components/Affix'
+
+export { Anchor } from './components/Anchor'
+export type { AnchorItem, AnchorProps } from './components/Anchor'
+
+export {
+  BackTop,
+  FloatButton,
+  FloatButtonGroup,
+  floatButtonVariants,
+} from './components/FloatButton'
+export type {
+  BackTopProps,
+  FloatButtonGroupProps,
+  FloatButtonProps,
+  FloatPosition,
+} from './components/FloatButton'
+
+export { Result } from './components/Result'
+export type { ResultProps, ResultStatus } from './components/Result'
+
+export { Watermark } from './components/Watermark'
+export type { WatermarkFont, WatermarkProps } from './components/Watermark'
+
+export {
+  pickActiveAnchor,
+  scrollTargetFor,
+  type AnchorSection,
+} from './lib/anchor'
