@@ -136,8 +136,8 @@ it is live at <https://1parado.github.io/UI_UI/>.
 - **Toast** — transient notifications with viewport management
 - **Progress** — animated progress bar with ARIA attributes
 - **Spinner** — indeterminate activity indicator
-- **Skeleton** — loading placeholder
-- **Empty** — empty-state composition
+- **Skeleton** — one bar, or composed: `SkeletonText` (ragged paragraph), `SkeletonAvatar`, `SkeletonCard`, `SkeletonTable` (wide first column) and `SkeletonButton`
+- **Empty** — empty-state composition, plus `EmptyIllustration` with eight drawn presets (inbox, search, error, folder, image, cart, chat, notification) and matching copy from `lib/empty`
 - **Badge** — status badges
 - **Result** — the end of a flow: success, error, warning, 404, 403, 500, with a title, an explanation and actions
 - **Watermark** — canvas-tiled mark over its children, `aria-hidden` and click-through, restored if deleted in devtools
@@ -151,8 +151,10 @@ it is live at <https://1parado.github.io/UI_UI/>.
 - **Sparkline** — axis-free trend line for table cells and stat cards
 - **RingProgress** — single-ratio progress ring, same ARIA contract as `Progress`
 - **Stat** — one metric: label, figure, change and an optional sparkline
+- **Statistic** — a bigger number: prefix/suffix, precision, grouping, a custom formatter, and an up/down trend that follows the market-colour convention when `higherIsBetter={false}`
 - **Chart** — recharts connected to `--chart-*` design tokens: `ChartContainer` for sizing and theming, `ChartTooltip` / `ChartLegend` for the dressing, and the recharts chart primitives re-exported
 - **QRCode** — `qrcode.react` on a forced white plate with a rounded frame, so it stays scannable in dark mode
+- **Barcode** — hand-drawn Code 128 (`lib/code128`): auto A/B/C set switching with a checksum, rendered as SVG bars that scale to any width
 - **NotificationCenter / NotificationList** — bell with an unread count over an inbox list
   grouped into unread and read
 
@@ -174,6 +176,9 @@ it is live at <https://1parado.github.io/UI_UI/>.
 - **Kbd / KbdGroup** — keyboard keys and shortcuts
 - **Image** — deferred off-screen loading, a held layout, a graceful failure, and a click-to-open preview that zooms
 - **List** — a list container owning what sits above and below the rows, the dividers between them, and the skeleton rows that stop it claiming to be empty while fetching
+- **ConfigProvider** — one context for size, theme and locale: `useConfigSize` feeds size-aware components, `useLocale` answers translated labels, and `mergeLocale` patches the built-in `enUS` / `zhCN` dictionaries without replacing them
+- **Signature** — pressure-friendly canvas signing: pointer events with capture, straight strokes between samples, `toDataURL` and `clear` through the handle
+- **Cropper** — move the picture under a fixed window (the phone-photo-picker gesture), zoom slider, circle or rect, and an export that crops at the *source* resolution via `drawImage`, not a screenshot of the preview
 
 ### AI surfaces
 

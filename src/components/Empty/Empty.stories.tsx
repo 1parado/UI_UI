@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Empty, EmptyTitle, EmptyDescription } from './Empty'
+import { EmptyIllustration } from './EmptyIllustration'
+import { emptyPresets, type EmptyPreset } from '@/lib/empty'
 import { Button } from '../Button'
 
 const meta: Meta<typeof Empty> = {
@@ -34,6 +36,48 @@ export const WithAction: Story = {
         Refresh
       </Button>
     </Empty>
+  ),
+}
+
+export const Preset: StoryObj<{ preset: EmptyPreset }> = {
+  args: { preset: 'inbox' },
+  argTypes: {
+    preset: {
+      control: 'select',
+      options: Object.keys(emptyPresets),
+    },
+  },
+  render: ({ preset }) => {
+    const copy = emptyPresets[preset]
+
+    return (
+      <Empty className="w-[360px] rounded-lg border border-dashed">
+        <EmptyIllustration name={preset} />
+        <EmptyTitle>{copy.title}</EmptyTitle>
+        <EmptyDescription>{copy.description}</EmptyDescription>
+      </Empty>
+    )
+  },
+}
+
+/**
+ * Every drawing in the set, with the copy that goes with it — the fastest way
+ * to see whether one of them fits the screen you are building.
+ */
+export const AllPresets: Story = {
+  render: () => (
+    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {(Object.keys(emptyPresets) as EmptyPreset[]).map((preset) => (
+        <Empty
+          key={preset}
+          className="rounded-lg border border-dashed"
+        >
+          <EmptyIllustration name={preset} />
+          <EmptyTitle>{emptyPresets[preset].title}</EmptyTitle>
+          <EmptyDescription>{emptyPresets[preset].description}</EmptyDescription>
+        </Empty>
+      ))}
+    </div>
   ),
 }
 
