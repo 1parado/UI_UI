@@ -16,19 +16,32 @@ export type CollapsibleTriggerProps = React.ComponentPropsWithoutRef<
 const CollapsibleTrigger = React.forwardRef<
   React.ElementRef<typeof CollapsiblePrimitive.Trigger>,
   CollapsibleTriggerProps
->(({ className, children, ...props }, ref) => (
-  <CollapsiblePrimitive.Trigger
-    ref={ref}
-    className={cn(
-      'flex w-full items-center justify-between gap-4 rounded-md text-left text-sm font-medium ring-offset-background transition-colors hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180',
-      className
-    )}
-    {...props}
-  >
-    {children}
-    <ChevronDownIcon className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 motion-reduce:transition-none" />
-  </CollapsiblePrimitive.Trigger>
-))
+>(({ className, asChild, children, ...props }, ref) => {
+  // `asChild` hands the trigger to a consumer element (usually `Button`).
+  // Appending the chevron would give Radix's Slot two children and crash with
+  // "Expected a single React element child" — so in that mode the consumer
+  // owns the indicator and we pass the children through untouched.
+  return (
+    <CollapsiblePrimitive.Trigger
+      ref={ref}
+      asChild={asChild}
+      className={cn(
+        'flex w-full items-center justify-between gap-4 rounded-md text-left text-sm font-medium ring-offset-background transition-colors hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180',
+        className
+      )}
+      {...props}
+    >
+      {asChild ? (
+        children
+      ) : (
+        <>
+          {children}
+          <ChevronDownIcon className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 motion-reduce:transition-none" />
+        </>
+      )}
+    </CollapsiblePrimitive.Trigger>
+  )
+})
 CollapsibleTrigger.displayName = CollapsiblePrimitive.Trigger.displayName
 
 export type CollapsibleContentProps = React.ComponentPropsWithoutRef<
