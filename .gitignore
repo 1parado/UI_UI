@@ -7,6 +7,8 @@ node_modules
 dist
 build
 storybook-static
+# Parked by scripts/clean.mjs when the environment refuses a recursive delete
+.stale-*
 
 # Logs
 *.log
