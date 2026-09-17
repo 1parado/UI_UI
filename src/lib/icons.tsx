@@ -292,3 +292,52 @@ export const InboxIcon = (props: IconProps) => (
     <path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
   </svg>
 )
+
+export const FolderIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" />
+  </svg>
+)
+
+export const FolderOpenIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2" />
+  </svg>
+)
+
+export const TerminalIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <polyline points="4 17 10 11 4 5" />
+    <line x1="12" y1="19" x2="20" y2="19" />
+  </svg>
+)
+
+export const UploadCloudIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+    <path d="M12 12v9" />
+    <path d="m16 16-4-4-4 4" />
+  </svg>
+)
+
+export const ColumnsIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <rect width="18" height="18" x="3" y="3" rx="2" />
+    <path d="M12 3v18" />
+  </svg>
+)
+
+export const RowsIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <rect width="18" height="18" x="3" y="3" rx="2" />
+    <path d="M3 12h18" />
+  </svg>
+)
+
+export const DownloadIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+    <polyline points="7 10 12 15 17 10" />
+    <line x1="12" y1="15" x2="12" y2="3" />
+  </svg>
+)

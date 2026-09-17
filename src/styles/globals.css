@@ -48,6 +48,33 @@
     --code-variable: 340 55% 45%;
     --code-punctuation: 215 16% 42%;
 
+    /**
+     * Terminal surface. Deliberately dark in both themes — a terminal that
+     * follows a light theme stops looking like a terminal, and more to the
+     * point the ANSI palette below is tuned for a dark background, which is
+     * why it is defined once here and not repeated under `.dark`.
+     */
+    --terminal-bg: 220 20% 11%;
+    --terminal-foreground: 210 20% 88%;
+
+    /* ANSI SGR colours 0–15. Bright variants sit above the base eight. */
+    --ansi-black: 220 12% 22%;
+    --ansi-red: 0 65% 62%;
+    --ansi-green: 140 50% 55%;
+    --ansi-yellow: 40 85% 60%;
+    --ansi-blue: 215 80% 68%;
+    --ansi-magenta: 290 60% 72%;
+    --ansi-cyan: 185 60% 60%;
+    --ansi-white: 210 15% 80%;
+    --ansi-bright-black: 215 12% 48%;
+    --ansi-bright-red: 0 85% 72%;
+    --ansi-bright-green: 140 70% 66%;
+    --ansi-bright-yellow: 45 95% 68%;
+    --ansi-bright-blue: 215 95% 79%;
+    --ansi-bright-magenta: 290 80% 81%;
+    --ansi-bright-cyan: 185 80% 73%;
+    --ansi-bright-white: 210 20% 96%;
+
     --radius: 0.5rem;
   }
 

@@ -46,6 +46,15 @@ export default {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',
         },
+        /**
+         * The terminal surface is its own intent: dark in both themes, so log
+         * output reads the same wherever it is embedded. The ANSI colours it
+         * carries are reached through `hsl(var(--ansi-*))` in `lib/ansi`.
+         */
+        terminal: {
+          DEFAULT: 'hsl(var(--terminal-bg))',
+          foreground: 'hsl(var(--terminal-foreground))',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',
