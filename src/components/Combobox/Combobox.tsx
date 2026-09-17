@@ -11,6 +11,10 @@ import {
   CommandList,
 } from '@/components/Command'
 import { CheckIcon, ChevronDownIcon, XIcon } from '@/lib/icons'
+import {
+  useControllableString,
+  useControllableStringArray,
+} from '@/lib/use-controllable-state'
 
 export interface ComboboxOption {
   value: string
@@ -49,58 +53,6 @@ export interface ComboboxMultipleProps extends ComboboxBaseProps {
   value?: string[]
   defaultValue?: string[]
   onValueChange?: (value: string[]) => void
-}
-
-/**
- * Controllable state, the same contract Radix uses everywhere else in the
- * library: pass `value` to own it, or `defaultValue` to let the picker hold it.
- * Without either, the picker starts empty and keeps its own selection — which
- * is what a one-off template needs.
- */
-function useControllableString({
-  value,
-  defaultValue,
-  onValueChange,
-}: {
-  value?: string
-  defaultValue?: string
-  onValueChange?: (value: string) => void
-}) {
-  const [internal, setInternal] = React.useState(defaultValue ?? '')
-  const current = value ?? internal
-
-  const setValue = React.useCallback(
-    (next: string) => {
-      if (value === undefined) setInternal(next)
-      onValueChange?.(next)
-    },
-    [value, onValueChange]
-  )
-
-  return [current, setValue] as const
-}
-
-function useControllableStringArray({
-  value,
-  defaultValue,
-  onValueChange,
-}: {
-  value?: string[]
-  defaultValue?: string[]
-  onValueChange?: (value: string[]) => void
-}) {
-  const [internal, setInternal] = React.useState<string[]>(defaultValue ?? [])
-  const current = value ?? internal
-
-  const setValue = React.useCallback(
-    (next: string[]) => {
-      if (value === undefined) setInternal(next)
-      onValueChange?.(next)
-    },
-    [value, onValueChange]
-  )
-
-  return [current, setValue] as const
 }
 
 const optionLabel = (option: ComboboxOption) =>
