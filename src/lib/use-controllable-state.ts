@@ -9,6 +9,11 @@ import * as React from 'react'
  * Extracted from `Combobox`, where this was written twice (once for the single
  * picker and once for the multi picker) before the third and fourth components
  * needed the same pair of `useState` and callback.
+ *
+ * `setValue` also takes an updater function, like `useState`'s setter. That is
+ * not sugar: a component with several async jobs in flight (an upload queue)
+ * has to fold each result into the latest value, and reading the value from the
+ * render scope loses whichever result landed in the same batch.
  */
 export function useControllableState<T>({
   value,
@@ -22,10 +27,22 @@ export function useControllableState<T>({
   const [internal, setInternal] = React.useState<T>(defaultValue)
   const current = value === undefined ? internal : value
 
+  // Read through a ref so that `setValue` stays stable no matter how often the
+  // value changes — an updater inside an in-flight async job (an upload
+  // reporting progress, say) must not be rebuilt on every render.
+  const currentRef = React.useRef(current)
+  currentRef.current = current
+
   const setValue = React.useCallback(
-    (next: T) => {
-      if (value === undefined) setInternal(next)
-      onValueChange?.(next)
+    (next: T | ((previous: T) => T)) => {
+      const resolve = (previous: T) =>
+        typeof next === 'function' ? (next as (previous: T) => T)(previous) : next
+
+      // The updater goes to `useState` itself, not through the ref: two results
+      // landing in the same batch (two uploads finishing together) must each be
+      // folded into the other, and only `useState` knows about the queue.
+      if (value === undefined) setInternal(resolve)
+      onValueChange?.(resolve(currentRef.current))
     },
     [value, onValueChange]
   )
