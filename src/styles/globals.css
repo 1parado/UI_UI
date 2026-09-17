@@ -75,6 +75,18 @@
     --ansi-bright-cyan: 185 80% 73%;
     --ansi-bright-white: 210 20% 96%;
 
+    /**
+     * Categorical chart series. Five slots, cycled in order — a chart with more
+     * than five series is usually two charts. Kept apart in hue *and* lightness
+     * so the series stay distinguishable in greyscale and for the common forms
+     * of colour blindness.
+     */
+    --chart-1: 221 83% 53%;
+    --chart-2: 262 83% 58%;
+    --chart-3: 173 80% 36%;
+    --chart-4: 32 95% 44%;
+    --chart-5: 340 75% 50%;
+
     --radius: 0.5rem;
   }
 
@@ -121,6 +133,13 @@
     --code-type: 190 75% 70%;
     --code-variable: 340 80% 76%;
     --code-punctuation: 215 20% 70%;
+
+    /* Same hues, lifted for a dark surface. */
+    --chart-1: 217 91% 70%;
+    --chart-2: 263 85% 76%;
+    --chart-3: 172 70% 55%;
+    --chart-4: 35 95% 63%;
+    --chart-5: 340 85% 72%;
   }
 }
 

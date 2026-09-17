@@ -55,6 +55,18 @@ export default {
           DEFAULT: 'hsl(var(--terminal-bg))',
           foreground: 'hsl(var(--terminal-foreground))',
         },
+        /**
+         * Chart series colours. Reach for `bg-chart-1` / `text-chart-2` in a
+         * legend, or `var(--chart-1)` in SVG attributes — `ChartContainer`
+         * resolves the latter from its `config`.
+         */
+        chart: {
+          1: 'hsl(var(--chart-1))',
+          2: 'hsl(var(--chart-2))',
+          3: 'hsl(var(--chart-3))',
+          4: 'hsl(var(--chart-4))',
+          5: 'hsl(var(--chart-5))',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',

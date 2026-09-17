@@ -26,9 +26,10 @@ export default defineConfig({
     },
     rollupOptions: {
       // Radix primitives stay bundled — they are small and it keeps the output
-      // predictable. The markdown stack is kept external instead: it is only
-      // reachable through `MarkdownRenderer`, it is heavy, and consumers get it
-      // from this package's own `dependencies`.
+      // predictable. Everything heavy is kept external instead: it is only
+      // reachable through one component, and consumers get it from this
+      // package's own `dependencies`. Bundling recharts or embla would roughly
+      // double the output for code most consumers never import.
       external: [
         'react',
         'react-dom',
@@ -36,6 +37,12 @@ export default defineConfig({
         'react-markdown',
         'remark-gfm',
         'rehype-highlight',
+        'react-hook-form',
+        '@tanstack/react-virtual',
+        'embla-carousel-react',
+        'react-resizable-panels',
+        'recharts',
+        'qrcode.react',
       ],
       output: {
         globals: {

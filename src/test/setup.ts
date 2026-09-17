@@ -157,3 +157,30 @@ Element.prototype.matches = function matches(selectors: string): boolean {
   if (TOP_LAYER_SELECTORS.has(selectors)) return false
   return originalMatches.call(this, selectors)
 }
+
+/**
+ * jsdom has no `IntersectionObserver`. embla-carousel (behind `Carousel`) uses
+ * one to notice when a slide is visible, and constructs it during
+ * initialisation — without the stub every carousel render throws
+ * `IntersectionObserver is not defined` before a single assertion runs.
+ *
+ * The stub never fires a callback, which is the honest answer offline: nothing
+ * is ever observed to be intersecting.
+ */
+if (typeof globalThis.IntersectionObserver === 'undefined') {
+  class IntersectionObserverStub {
+    readonly root: Element | Document | null = null
+    readonly rootMargin: string = ''
+    readonly thresholds: ReadonlyArray<number> = []
+
+    observe(): void {}
+    unobserve(): void {}
+    disconnect(): void {}
+    takeRecords(): IntersectionObserverEntry[] {
+      return []
+    }
+  }
+
+  globalThis.IntersectionObserver =
+    IntersectionObserverStub as unknown as typeof IntersectionObserver
+}
