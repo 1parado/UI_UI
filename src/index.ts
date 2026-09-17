@@ -544,6 +544,48 @@ export { TagInput } from './components/TagInput'
 export type { TagInputProps } from './components/TagInput'
 export { Sparkline } from './components/Sparkline'
 export type { SparklineProps } from './components/Sparkline'
+export { RingProgress } from './components/RingProgress'
+export type { RingProgressProps } from './components/RingProgress'
+export { Stat } from './components/Stat'
+export type { StatProps } from './components/Stat'
+export { ColorPicker, ColorSwatch, DEFAULT_COLOR_PRESETS } from './components/ColorPicker'
+export type { ColorPickerProps, ColorSwatchProps } from './components/ColorPicker'
+export { TimePicker, TimeColumns, DateTimePicker, parseTime, formatTime } from './components/TimePicker'
+export type {
+  TimePickerProps,
+  TimeColumnsProps,
+  TimeColumnsLabels,
+  DateTimePickerProps,
+} from './components/TimePicker'
+export { MultiSelect } from './components/MultiSelect'
+export type {
+  MultiSelectProps,
+  MultiSelectOption,
+  MultiSelectLabels,
+} from './components/MultiSelect'
+export {
+  NotificationCenter,
+  NotificationList,
+  notificationToneVariants,
+} from './components/NotificationCenter'
+export type {
+  NotificationCenterProps,
+  NotificationListProps,
+  NotificationListLabels,
+  NotificationItem,
+} from './components/NotificationCenter'
+
+// Colour maths — used by ColorPicker, exported for callers doing their own
+export {
+  rgbToHex,
+  parseHex,
+  rgbToHsv,
+  hsvToRgb,
+  hexToHsv,
+  readableInk,
+  type Rgb,
+  type Hsv,
+} from './lib/color'
 
 // AI surfaces — conversation
 export {

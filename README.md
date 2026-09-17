@@ -135,6 +135,17 @@ it is live at <https://1parado.github.io/UI_UI/>.
 - **Rating** — star rating driven as one slider, so half steps and keyboard control both work
 - **TagInput** — free-text tags; Enter or comma commits, Backspace removes, IME-safe
 - **Sparkline** — axis-free trend line for table cells and stat cards
+- **RingProgress** — single-ratio progress ring, same ARIA contract as `Progress`
+- **Stat** — one metric: label, figure, change and an optional sparkline
+- **NotificationCenter / NotificationList** — bell with an unread count over an inbox list
+  grouped into unread and read
+
+**Pickers**
+- **ColorPicker** — hue slider, saturation/brightness square, hex field and presets; the
+  colour maths lives in `lib/color`, so no dependency is added
+- **TimePicker / TimeColumns / DateTimePicker** — hour and minute columns, 24- or 12-hour
+  display, optional native fallbacks
+- **MultiSelect** — grouped options, select-all and an optional ceiling on selections
 
 **Other**
 - **Avatar** — image with automatic fallback
